@@ -9,9 +9,17 @@ I will upload pictures of this frontend project so let's go :
 ![InvoiceSearchPage](https://user-images.githubusercontent.com/36606053/85209632-cf42f100-b339-11ea-8d49-40836c95b834.PNG)
 
 **Add Invoice Page**
+*Steps :- *
+* select Store from drop down list *
+* when you put the cursor on search by product you will get all products with ability to filter select one*
+* when you select the product it's automatically added to table below and update everything like total , net *
+* some products allow discount and other not so you might find product with disabled to make discount*
+
 ![addinvoice](https://user-images.githubusercontent.com/36606053/85209716-6f007f00-b33a-11ea-9659-d283401f5f08.PNG)
 
 **After adding new Invoice to the system**
+
+*after adding the invoice you will get an invoice number which you can search later or print the invoice*
 
 ![invoiceAddcorrectly](https://user-images.githubusercontent.com/36606053/85209732-88093000-b33a-11ea-84ea-34fb3b5c5c46.PNG)
 
