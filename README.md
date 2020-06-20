@@ -1,5 +1,25 @@
 # DynamicslinkTask
 
+
+this is the forntend part of my api project you can get [Here](https://github.com/khaledgomaa/Dynamics-Task.git)
+
+I will upload pictures of this frontend project so let's go :
+
+**Home Page**
+![InvoiceSearchPage](https://user-images.githubusercontent.com/36606053/85209632-cf42f100-b339-11ea-8d49-40836c95b834.PNG)
+
+**Add Invoice Page**
+![addinvoice](https://user-images.githubusercontent.com/36606053/85209716-6f007f00-b33a-11ea-9659-d283401f5f08.PNG)
+
+**After adding new Invoice to the system**
+
+![invoiceAddcorrectly](https://user-images.githubusercontent.com/36606053/85209732-88093000-b33a-11ea-84ea-34fb3b5c5c46.PNG)
+
+**Search for the added Invoice**
+
+![searchforaddedinvoice](https://user-images.githubusercontent.com/36606053/85209738-9c4d2d00-b33a-11ea-80d2-7ef5babab55b.PNG)
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.9.
 
 ## Development server
