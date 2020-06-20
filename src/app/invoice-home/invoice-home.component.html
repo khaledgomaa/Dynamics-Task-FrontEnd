@@ -1,0 +1,60 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<script src="https://use.fontawesome.com/c560c025cf.js"></script>
+<div class="row justify-content-center top-margin">
+    <div class="col-12 col-md-10 col-lg-8">
+        <br>
+            <br><br>
+              <input type="number" name="productSearch" class="form-control" [(ngModel)]="InvoiceSearch"  placeholder="Search by Invoice Number">
+              <button class="btn btn-primary nice-margin" (click)="getInvoiceFromApiById()">Submit</button>
+            </div>
+    <!--end of col-->
+</div>
+
+<br>
+<div class="container">
+   <div class="card shopping-cart">
+            <div class="card-body">
+                    <!-- PRODUCT -->
+                    <table class="table">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th style="width: 20%;">ProductName</th>
+                            <th style="width: 15%;">Price</th>
+                            <th style="width: 10%;">Qty</th>
+                            <th style="width: 20%;">Discount</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let item of getInvoiceByID.invoiceProducts">
+                            <td>{{item.product.name}}</td>
+                            <td>{{item.price}}</td>
+                            <td>{{item.qty}}</td>
+                            <td>{{item.discount}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    <!-- END PRODUCT -->
+            </div>
+            <div class="card-footer">
+                <div class="pull-right" >
+                    <div class="pull-right" >
+                        Total : {{getTotalMoney()}}<b></b>
+                    </div>
+                    <br>
+                    <div class="pull-right" >
+                        Taxes : {{getInvoiceByID.invoice.taxes}} <b></b>
+                    </div>
+                    <br>
+                    <div class="pull-right" >
+                        Net : {{getNetMoney()}}<b></b>
+                    </div>
+                    <br>
+                    <a class="btn btn-success pull-right" (click)="navigateToInvoice()">New Invoice</a>
+                </div>
+            </div>
+        </div>
+</div>

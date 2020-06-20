@@ -1,0 +1,102 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<script src="https://use.fontawesome.com/c560c025cf.js"></script>
+<div class="row justify-content-center top-margin">
+    <div class="col-12 col-md-10 col-lg-8">
+        <select class="form-control form-control-lg" [(ngModel)]="selectedStoreId">
+            <option *ngFor="let item of storesApi.storeData" [ngValue]="item.id">
+                {{item.name}}
+            </option>
+        </select>
+        <br>
+            <br><br>
+            <mat-form-field>
+              <input type="text" name="productSearch" class="form-control" matInput [matAutocomplete]="auto" [(ngModel)]="productSearch" placeholder="Search by product">
+            </mat-form-field>
+            
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let option of productApi.productData | filter:productSearch" (click)="addItemToInvoice(option)" [value]="option.name">{{option.name}}</mat-option>
+            </mat-autocomplete>
+
+            
+                <!--end of col-->
+                
+    </div>
+    <!--end of col-->
+</div>
+<br>
+<div class="container">
+   <div class="card shopping-cart">
+            <div class="card-body">
+                    <!-- PRODUCT -->
+                    <table class="table">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th style="width: 20%;">Item</th>
+                            <th style="width: 15%;">Price</th>
+                            <th style="width: 10%;">Qty</th>
+                            <th style="width: 15%;">Total</th>
+                            <th style="width: 20%;">Discount %</th>
+                            <th style="width: 20%;">Net</th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let item of productsInInvoice">
+                            <td>{{item.name}}</td>
+                            <td>{{item.price}}</td>
+                            <td>
+                                <div class="quantity">
+                                    <input type="number"
+                                    max="99" min="1" value="1" title="Qty" class="qty" size="4" 
+                                    (click)="updateProduct(item,$event)">
+                                </div>
+                            </td>
+                            <td>{{item.total}}</td>
+                            <td>
+                              <div class="quantity">
+                                <input type="number" [disabled]="!item.discountFlag"
+                                 (click)="computeDiscountForEachItem(item,$event)"
+                                max="50" min="0" value="0" title="Qty" class="qty" size="4" >
+                            </div>
+                            </td>
+                            <td>{{getNetForEachItem(item)}}</td>
+                            <td>
+                              <div class="col-2 col-sm-2 col-md-2 text-right">
+                                <button type="button" class="btn btn-outline-danger btn-xs" (click)="removeProductFromCart(item)">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    <!-- END PRODUCT -->
+            </div>
+            <div class="card-footer">
+                <div class="pull-right" >
+                    <div class="pull-right" >
+                        Total : <b>{{getTotal()}}</b>
+                    </div>
+                    <br>
+                    <div class="pull-right" >
+                        Taxes : <b>{{taxes}}</b>
+                    </div>
+                    <br>
+                    <div class="pull-right" >
+                        Net : <b>{{getNetMoney()}}</b>
+                    </div>
+                    <br>
+                    <a class="btn btn-success pull-right" (click)="submitMyInvoice()">Checkout</a>
+                    <a class="btn btn-outline-danger pull-right left-margin" (click)="cancelInvoice()">Cancel</a>
+                </div>
+            </div>
+            <input type="text" [disabled]="true" style="float: right; text-align: center;" [(ngModel)]="myDate">       
+            <h3>
+              <a class="text-danger my-0 my-sm-0" >your Invoice number is {{invoiceId.id}}</a>     
+            </h3>
+        </div>
+</div>
